@@ -1,0 +1,2191 @@
+{
+  "project": "15-llm-inference-scheduler",
+  "initialized_at": "2026-10-24T09:18:54.346814+00:00",
+  "total_features": 40,
+  "layer_counts": {
+    "FE": 2,
+    "BE": 40,
+    "DB": 11,
+    "ML": 0
+  },
+  "features": {
+    "SCH-002": {
+      "id": "SCH-002",
+      "feature": "Request admission",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Scheduler Core",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:19:10.261738+00:00",
+      "completed_at": "2026-10-24T09:25:46.457087+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_request_admission.py::test_SCH_002_request_admission_valid",
+        "backend/tests/test_request_admission.py::test_SCH_002_request_admission_rejections"
+      ],
+      "files": [
+        "backend/src/scheduler/admission.py",
+        "backend/src/scheduler/models.py"
+      ],
+      "evidence": "",
+      "notes": "Request admission controller with prompt, model, and queue bounds",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-003": {
+      "id": "SCH-003",
+      "feature": "Queue management",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Scheduler Core",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:19:10.262428+00:00",
+      "completed_at": "2026-10-24T09:25:53.975432+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_queue_management.py::test_SCH_003_queue_management"
+      ],
+      "files": [
+        "backend/src/scheduler/queue.py"
+      ],
+      "evidence": "",
+      "notes": "QueueManager submit, depth, and cancel operations",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-005": {
+      "id": "SCH-005",
+      "feature": "FIFO queue",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Scheduler Core",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:19:10.262582+00:00",
+      "completed_at": "2026-10-24T09:25:59.651059+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_fifo_queue.py::test_SCH_005_fifo_queue_ordering"
+      ],
+      "files": [
+        "backend/src/scheduler/queue.py"
+      ],
+      "evidence": "",
+      "notes": "Strict FIFO queue ordering with O(1) indexed lookups",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-006": {
+      "id": "SCH-006",
+      "feature": "Priority queue",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Scheduler Core",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:26:30.771497+00:00",
+      "completed_at": "2026-10-24T09:29:02.903389+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_priority_queue.py::test_SCH_006_priority_queue"
+      ],
+      "files": [
+        "backend/src/scheduler/queue.py"
+      ],
+      "evidence": "",
+      "notes": "PriorityQueue with arrival-time FIFO tie breaking",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-007": {
+      "id": "SCH-007",
+      "feature": "Weighted fair queue",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Scheduler Core",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:26:30.773289+00:00",
+      "completed_at": "2026-10-24T09:29:17.959513+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_weighted_fair_queue.py::test_SCH_007_weighted_fair_queue"
+      ],
+      "files": [
+        "backend/src/scheduler/queue.py"
+      ],
+      "evidence": "",
+      "notes": "Weighted Fair Queue using Deficit Round Robin over tenant weights",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-011": {
+      "id": "SCH-011",
+      "feature": "Queue aging",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Scheduler Core",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:26:30.773628+00:00",
+      "completed_at": "2026-10-24T09:29:34.108853+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_queue_aging.py::test_SCH_011_queue_aging_prevents_starvation"
+      ],
+      "files": [
+        "backend/src/scheduler/queue.py"
+      ],
+      "evidence": "",
+      "notes": "Dynamic priority aging preventing low-priority request starvation",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-012": {
+      "id": "SCH-012",
+      "feature": "Backpressure",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Scheduler Core",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:29:54.125452+00:00",
+      "completed_at": "2026-10-24T09:31:22.317501+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_backpressure.py::test_SCH_012_backpressure_hysteresis_and_rejection"
+      ],
+      "files": [
+        "backend/src/scheduler/backpressure.py"
+      ],
+      "evidence": "",
+      "notes": "Backpressure controller with hysteresis and dynamic retry-after",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-014": {
+      "id": "SCH-014",
+      "feature": "Request cancellation",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Scheduler Core",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:29:54.126620+00:00",
+      "completed_at": "2026-10-24T09:31:27.390008+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_request_cancellation.py::test_SCH_014_request_cancellation"
+      ],
+      "files": [
+        "backend/src/scheduler/cancellation.py"
+      ],
+      "evidence": "",
+      "notes": "Request cancellation with cooperative tokens and queue status transitions",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-015": {
+      "id": "SCH-015",
+      "feature": "GPU inventory",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area GPU / Accelerator Management",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:31:44.960766+00:00",
+      "completed_at": "2026-10-24T09:34:31.853249+00:00",
+      "verification": "SIMULATED_HW",
+      "tests": [
+        "backend/tests/test_gpu_inventory.py::test_SCH_015_gpu_inventory_real_and_simulated"
+      ],
+      "files": [
+        "backend/src/gpu/models.py",
+        "backend/src/gpu/telemetry.py",
+        "backend/src/gpu/manager.py"
+      ],
+      "evidence": "",
+      "notes": "GPU inventory with honest zero-GPU NVML telemetry and simulated HW adapter",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-017": {
+      "id": "SCH-017",
+      "feature": "GPU memory tracking",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area GPU / Accelerator Management",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:31:44.961509+00:00",
+      "completed_at": "2026-10-24T09:34:38.082220+00:00",
+      "verification": "SIMULATED_HW",
+      "tests": [
+        "backend/tests/test_gpu_memory_tracking.py::test_SCH_017_gpu_memory_tracking"
+      ],
+      "files": [
+        "backend/src/gpu/models.py",
+        "backend/src/gpu/manager.py"
+      ],
+      "evidence": "",
+      "notes": "GPU memory tracking with atomic updates and capacity limits",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-024": {
+      "id": "SCH-024",
+      "feature": "Memory admission control",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area GPU / Accelerator Management",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:31:44.961660+00:00",
+      "completed_at": "2026-10-24T09:34:43.313018+00:00",
+      "verification": "SIMULATED_HW",
+      "tests": [
+        "backend/tests/test_memory_admission_control.py::test_SCH_024_memory_admission_control"
+      ],
+      "files": [
+        "backend/src/gpu/manager.py"
+      ],
+      "evidence": "",
+      "notes": "Memory admission control verifying headroom against GPU memory before dispatch",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-029": {
+      "id": "SCH-029",
+      "feature": "Model registry",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area Model & Runtime Management",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:35:03.605006+00:00",
+      "completed_at": "2026-10-24T09:36:42.007923+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_model_registry.py::test_SCH_029_model_registry"
+      ],
+      "files": [
+        "backend/src/models/registry.py"
+      ],
+      "evidence": "",
+      "notes": "Model registry with durable SQL storage and parameter validation",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-043": {
+      "id": "SCH-043",
+      "feature": "KV-cache manager",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area KV Cache & Memory",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:35:03.605974+00:00",
+      "completed_at": "2026-10-24T09:36:49.296073+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_kv_cache_manager.py::test_SCH_043_kv_cache_manager_invariants"
+      ],
+      "files": [
+        "backend/src/kv/allocator.py"
+      ],
+      "evidence": "",
+      "notes": "Paged KV cache manager enforcing free+used==total and non-negative refcounts",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-045": {
+      "id": "SCH-045",
+      "feature": "KV-cache allocation",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area KV Cache & Memory",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:35:03.606144+00:00",
+      "completed_at": "2026-10-24T09:36:55.249735+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_kv_cache_allocation.py::test_SCH_045_kv_cache_allocation"
+      ],
+      "files": [
+        "backend/src/kv/allocator.py"
+      ],
+      "evidence": "",
+      "notes": "Block-level KV cache allocation and append-slot decoding",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-046": {
+      "id": "SCH-046",
+      "feature": "KV-cache reclamation",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area KV Cache & Memory",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:37:09.970042+00:00",
+      "completed_at": "2026-10-24T09:38:26.816958+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_kv_reclamation.py::test_SCH_046_kv_cache_reclamation"
+      ],
+      "files": [
+        "backend/src/kv/allocator.py"
+      ],
+      "evidence": "",
+      "notes": "KV-cache block reclamation with zero-leak invariant checks",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-048": {
+      "id": "SCH-048",
+      "feature": "Prefix caching",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area KV Cache & Memory",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:37:09.970793+00:00",
+      "completed_at": "2026-10-24T09:38:32.980310+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_prefix_caching.py::test_SCH_048_prefix_caching"
+      ],
+      "files": [
+        "backend/src/kv/allocator.py"
+      ],
+      "evidence": "",
+      "notes": "Prefix caching with block hash indexing and refcounted sharing",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-049": {
+      "id": "SCH-049",
+      "feature": "Paged KV cache",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area KV Cache & Memory",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:37:09.970972+00:00",
+      "completed_at": "2026-10-24T09:38:41.433117+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_paged_kv_cache.py::test_SCH_049_paged_kv_cache_address_translation"
+      ],
+      "files": [
+        "backend/src/kv/allocator.py"
+      ],
+      "evidence": "",
+      "notes": "Paged KV cache logical-to-physical address translation and dynamic slot appending",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-052": {
+      "id": "SCH-052",
+      "feature": "OOM prevention",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area KV Cache & Memory",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:39:05.625817+00:00",
+      "completed_at": "2026-10-24T09:42:44.500593+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_oom_prevention.py::test_SCH_052_oom_prevention"
+      ],
+      "files": [
+        "backend/src/kv/allocator.py"
+      ],
+      "evidence": "",
+      "notes": "OOM prevention verifying memory headroom against high watermark ratio",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-053": {
+      "id": "SCH-053",
+      "feature": "KV-cache eviction policy",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area KV Cache & Memory",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:39:05.626693+00:00",
+      "completed_at": "2026-10-24T09:42:50.513002+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_kv_eviction.py::test_SCH_053_kv_cache_eviction_policy"
+      ],
+      "files": [
+        "backend/src/kv/allocator.py"
+      ],
+      "evidence": "",
+      "notes": "KV-cache LRU eviction policy strictly guarding active blocks with ref_count>0",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-057": {
+      "id": "SCH-057",
+      "feature": "Continuous batching",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Batching & Throughput",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:39:05.626851+00:00",
+      "completed_at": "2026-10-24T09:42:57.910480+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_continuous_batching.py::test_SCH_057_continuous_batching_join_and_leave"
+      ],
+      "files": [
+        "backend/src/batching/continuous.py"
+      ],
+      "evidence": "",
+      "notes": "Continuous batching engine with iteration-level request joins and leaves",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-061": {
+      "id": "SCH-061",
+      "feature": "Max batch size",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Batching & Throughput",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:43:14.909581+00:00",
+      "completed_at": "2026-10-24T09:45:16.426009+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_max_batch_size.py::test_SCH_061_max_batch_size_enforcement"
+      ],
+      "files": [
+        "backend/src/batching/continuous.py"
+      ],
+      "evidence": "",
+      "notes": "Max batch size enforcement rejecting excess concurrent sequences",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-062": {
+      "id": "SCH-062",
+      "feature": "Token-budget batching",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Batching & Throughput",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:43:14.912532+00:00",
+      "completed_at": "2026-10-24T09:45:24.241871+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_token_budget_batching.py::test_SCH_062_token_budget_batching"
+      ],
+      "files": [
+        "backend/src/batching/continuous.py"
+      ],
+      "evidence": "",
+      "notes": "Token-budget batch scheduler enforcing cumulative iteration limits",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-065": {
+      "id": "SCH-065",
+      "feature": "Mixed prefill/decode batching",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Batching & Throughput",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:43:14.912942+00:00",
+      "completed_at": "2026-10-24T09:45:31.475095+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_mixed_prefill_decode.py::test_SCH_065_mixed_prefill_and_decode_batching"
+      ],
+      "files": [
+        "backend/src/batching/continuous.py"
+      ],
+      "evidence": "",
+      "notes": "Mixed prefill and decode execution in a single continuous iteration",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-071": {
+      "id": "SCH-071",
+      "feature": "Model-aware routing",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Request Routing & Load Balancing",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:45:48.683946+00:00",
+      "completed_at": "2026-10-24T09:47:03.663754+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_model_aware_routing.py::test_SCH_071_model_aware_routing"
+      ],
+      "files": [
+        "backend/src/routing/router.py"
+      ],
+      "evidence": "",
+      "notes": "Model-aware request routing matching loaded models across replica inventory",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-073": {
+      "id": "SCH-073",
+      "feature": "Least-loaded routing",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Request Routing & Load Balancing",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:45:48.688670+00:00",
+      "completed_at": "2026-10-24T09:47:13.115608+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_least_loaded_routing.py::test_SCH_073_least_loaded_routing"
+      ],
+      "files": [
+        "backend/src/routing/router.py"
+      ],
+      "evidence": "",
+      "notes": "Least-loaded worker replica routing balancing active requests and token load",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-083": {
+      "id": "SCH-083",
+      "feature": "Replica draining",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Request Routing & Load Balancing",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:45:48.689259+00:00",
+      "completed_at": "2026-10-24T09:47:22.524581+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_replica_draining.py::test_SCH_083_replica_draining"
+      ],
+      "files": [
+        "backend/src/routing/router.py"
+      ],
+      "evidence": "",
+      "notes": "Replica draining cutting off new traffic while allowing in-flight requests to complete",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-085": {
+      "id": "SCH-085",
+      "feature": "Scheduler leader election",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Distributed Coordination",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:47:40.783576+00:00",
+      "completed_at": "2026-10-24T09:49:06.588257+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_leader_election.py::test_SCH_085_leader_election"
+      ],
+      "files": [
+        "backend/src/coordination/election.py"
+      ],
+      "evidence": "",
+      "notes": "Leader election with active lease check and fencing token increment",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-089": {
+      "id": "SCH-089",
+      "feature": "Lease management",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Distributed Coordination",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:47:40.784887+00:00",
+      "completed_at": "2026-10-24T09:49:14.293005+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_lease_management.py::test_SCH_089_lease_management_and_fencing_validation"
+      ],
+      "files": [
+        "backend/src/coordination/election.py"
+      ],
+      "evidence": "",
+      "notes": "Lease renewals and fencing token validation strictly rejecting deposed leader writes",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-090": {
+      "id": "SCH-090",
+      "feature": "Worker registration",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Distributed Coordination",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:47:40.785392+00:00",
+      "completed_at": "2026-10-24T09:49:21.076682+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_worker_registration.py::test_SCH_090_worker_registration"
+      ],
+      "files": [
+        "backend/src/coordination/workers.py"
+      ],
+      "evidence": "",
+      "notes": "Worker registration with endpoint, supported models, and capability tracking",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-091": {
+      "id": "SCH-091",
+      "feature": "Worker heartbeats",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Distributed Coordination",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:49:46.083432+00:00",
+      "completed_at": "2026-10-24T09:51:19.280128+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_worker_heartbeats.py::test_SCH_091_worker_heartbeats_and_timeout"
+      ],
+      "files": [
+        "backend/src/coordination/workers.py"
+      ],
+      "evidence": "",
+      "notes": "Worker heartbeats and deterministic timeout failure detection",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-096": {
+      "id": "SCH-096",
+      "feature": "Exactly-once dispatch semantics",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Distributed Coordination",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:49:46.085595+00:00",
+      "completed_at": "2026-10-24T09:51:27.712874+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_exactly_once_dispatch.py::test_SCH_096_effectively_once_dispatch_semantics"
+      ],
+      "files": [
+        "backend/src/coordination/dispatch.py"
+      ],
+      "evidence": "",
+      "notes": "Effectively-once dispatch proof using monotonically incrementing fencing tokens and deduplication store",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-097": {
+      "id": "SCH-097",
+      "feature": "At-least-once recovery",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Distributed Coordination",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:51:54.615399+00:00",
+      "completed_at": "2026-10-24T09:55:28.868040+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_at_least_once_recovery.py::test_SCH_097_at_least_once_recovery"
+      ],
+      "files": [
+        "backend/src/coordination/recovery.py"
+      ],
+      "evidence": "",
+      "notes": "At-least-once recovery reclaiming in-flight requests from dead workers and re-queuing",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-098": {
+      "id": "SCH-098",
+      "feature": "Duplicate dispatch prevention",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Distributed Coordination",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:49:46.086192+00:00",
+      "completed_at": "2026-10-24T09:51:33.577011+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_duplicate_dispatch_prevention.py::test_SCH_098_duplicate_dispatch_prevention"
+      ],
+      "files": [
+        "backend/src/coordination/dispatch.py"
+      ],
+      "evidence": "",
+      "notes": "Duplicate dispatch prevention across worker pool",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-099": {
+      "id": "SCH-099",
+      "feature": "Inference request API",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Backend APIs & Control Plane",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:51:54.616379+00:00",
+      "completed_at": "2026-10-24T09:55:36.844343+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_inference_request_api.py::test_SCH_099_inference_request_api"
+      ],
+      "files": [
+        "backend/src/api/app.py"
+      ],
+      "evidence": "",
+      "notes": "Synchronous inference request REST API with admission validation",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-100": {
+      "id": "SCH-100",
+      "feature": "Streaming inference API",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Backend APIs & Control Plane",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:51:54.616567+00:00",
+      "completed_at": "2026-10-24T09:55:43.825239+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_streaming_inference_api.py::test_SCH_100_streaming_inference_api"
+      ],
+      "files": [
+        "backend/src/api/app.py"
+      ],
+      "evidence": "",
+      "notes": "Streaming inference API over Server-Sent Events with incremental token events",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-112": {
+      "id": "SCH-112",
+      "feature": "Prometheus metrics",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Observability & Reliability",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:56:02.533541+00:00",
+      "completed_at": "2026-10-24T09:58:22.092524+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_prometheus_metrics.py::test_SCH_112_prometheus_metrics_endpoint"
+      ],
+      "files": [
+        "backend/src/observability/metrics.py",
+        "backend/src/api/app.py"
+      ],
+      "evidence": "",
+      "notes": "Prometheus metrics exposition endpoint with queues, batches, and KV gauges",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-117": {
+      "id": "SCH-117",
+      "feature": "TTFT metrics",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Observability & Reliability",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:56:02.535008+00:00",
+      "completed_at": "2026-10-24T09:58:33.721280+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_ttft_metrics.py::test_SCH_117_ttft_metrics"
+      ],
+      "files": [
+        "backend/src/observability/metrics.py"
+      ],
+      "evidence": "",
+      "notes": "Time To First Token (TTFT) Prometheus histogram latency observation",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-118": {
+      "id": "SCH-118",
+      "feature": "TPOT metrics",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Observability & Reliability",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:56:02.535575+00:00",
+      "completed_at": "2026-10-24T09:58:40.476381+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_tpot_metrics.py::test_SCH_118_tpot_metrics"
+      ],
+      "files": [
+        "backend/src/observability/metrics.py"
+      ],
+      "evidence": "",
+      "notes": "Time Per Output Token (TPOT) decode step duration histogram observation",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-138": {
+      "id": "SCH-138",
+      "feature": "Scheduler dashboard",
+      "layers": [
+        "FE",
+        "BE"
+      ],
+      "priority": "P1",
+      "area": "Area Frontend / Operations Console",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:59:03.569096+00:00",
+      "completed_at": "2026-10-24T10:01:34.768534+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_scheduler_dashboard.py::test_SCH_138_scheduler_dashboard"
+      ],
+      "files": [
+        "frontend/src/SchedulerDashboard.tsx",
+        "backend/src/api/app.py"
+      ],
+      "evidence": "",
+      "notes": "Scheduler dashboard with real-time continuous batching and KV cache telemetry",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-139": {
+      "id": "SCH-139",
+      "feature": "Queue dashboard",
+      "layers": [
+        "FE",
+        "BE"
+      ],
+      "priority": "P1",
+      "area": "Area Frontend / Operations Console",
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T09:59:03.570255+00:00",
+      "completed_at": "2026-10-24T10:01:43.130105+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_queue_dashboard.py::test_SCH_139_queue_dashboard"
+      ],
+      "files": [
+        "frontend/src/QueueDashboard.tsx",
+        "backend/src/api/app.py"
+      ],
+      "evidence": "",
+      "notes": "Queue dashboard with depth tracking, request inspection, and priority badges",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-001": {
+      "id": "SCH-001",
+      "feature": "Scheduler policy model",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Scheduler Core",
+      "rank": 8,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T12:30:13.656348+00:00",
+      "completed_at": "2026-10-24T12:32:46.650055+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_scheduler_policy_model.py::test_SCH_001_scheduler_policy_model"
+      ],
+      "files": [
+        "backend/src/scheduler/policy.py"
+      ],
+      "evidence": "",
+      "notes": "Configurable scheduling policy model supporting FIFO, Priority, Weighted-Fair, and Deadline-Aware evaluation",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-004": {
+      "id": "SCH-004",
+      "feature": "Priority classes",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Scheduler Core",
+      "rank": 9,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T12:33:19.075111+00:00",
+      "completed_at": "2026-10-24T12:36:49.016716+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_priority_classes.py::test_SCH_004_priority_classes"
+      ],
+      "files": [
+        "backend/src/scheduler/priority_classes.py"
+      ],
+      "evidence": "",
+      "notes": "Priority classes registry with tiered base scores, preemption flags, and anti-starvation aging",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-008": {
+      "id": "SCH-008",
+      "feature": "Deadline-aware scheduling",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Scheduler Core",
+      "rank": 17,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T12:37:30.085486+00:00",
+      "completed_at": "2026-10-24T12:41:52.332989+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_deadline_aware_scheduling.py::test_SCH_008_deadline_aware_scheduling"
+      ],
+      "files": [
+        "backend/src/scheduler/deadline.py"
+      ],
+      "evidence": "",
+      "notes": "Deadline-aware Earliest Feasible Deadline First (EDF) scheduler with deprioritize/reject policies",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-009": {
+      "id": "SCH-009",
+      "feature": "Tenant-aware scheduling",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Scheduler Core",
+      "rank": 10,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T12:42:18.134469+00:00",
+      "completed_at": "2026-10-24T12:44:12.483122+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_tenant_aware_scheduling.py::test_SCH_009_tenant_aware_scheduling"
+      ],
+      "files": [
+        "backend/src/scheduler/tenant.py"
+      ],
+      "evidence": "",
+      "notes": "Tenant-aware scheduler enforcing multi-tenant concurrency quotas and fair-share candidate filtering",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-010": {
+      "id": "SCH-010",
+      "feature": "Per-model queues",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Scheduler Core",
+      "rank": 18,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T12:44:29.557458+00:00",
+      "completed_at": "2026-10-24T12:46:16.221218+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_per_model_queues.py::test_SCH_010_per_model_queues"
+      ],
+      "files": [
+        "backend/src/scheduler/model_queues.py"
+      ],
+      "evidence": "",
+      "notes": "Dedicated per-model queues guaranteeing dispatch strictly to workers with requested model loaded in VRAM",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-013": {
+      "id": "SCH-013",
+      "feature": "Admission rejection",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Scheduler Core",
+      "rank": 7,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T12:46:36.243402+00:00",
+      "completed_at": "2026-10-24T12:49:14.342756+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_admission_rejection.py::test_SCH_013_admission_rejection"
+      ],
+      "files": [
+        "backend/src/scheduler/admission.py",
+        "backend/src/scheduler/models.py",
+        "backend/tests/test_admission_rejection.py"
+      ],
+      "evidence": "",
+      "notes": "Structured admission rejection with retryable classification and reason codes",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-016": {
+      "id": "SCH-016",
+      "feature": "GPU health detection",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area GPU / Accelerator Management",
+      "rank": 24,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T12:50:06.987498+00:00",
+      "completed_at": "2026-10-24T12:53:08.354136+00:00",
+      "verification": "SIMULATED_HW",
+      "tests": [
+        "backend/tests/test_gpu_health_detection.py::test_SCH_016_gpu_health_detection"
+      ],
+      "files": [
+        "backend/src/gpu/health.py",
+        "backend/src/gpu/manager.py",
+        "backend/src/gpu/models.py"
+      ],
+      "evidence": "",
+      "notes": "GPU health detection evaluating thermal, ECC, and driver faults with SQL state persistence",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-018": {
+      "id": "SCH-018",
+      "feature": "GPU utilization tracking",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area GPU / Accelerator Management",
+      "rank": 25,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T12:51:09.822082+00:00",
+      "completed_at": "2026-10-24T12:55:03.434021+00:00",
+      "verification": "SIMULATED_HW",
+      "tests": [
+        "backend/tests/test_gpu_utilization_tracking.py::test_SCH_018_gpu_utilization_tracking"
+      ],
+      "files": [
+        "backend/src/gpu/manager.py",
+        "backend/src/gpu/models.py"
+      ],
+      "evidence": "",
+      "notes": "GPU compute and memory utilization metrics tracking with time-series persistence in SQL",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-020": {
+      "id": "SCH-020",
+      "feature": "Device assignment",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area GPU / Accelerator Management",
+      "rank": 23,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T12:51:09.898873+00:00",
+      "completed_at": "2026-10-24T12:57:04.162830+00:00",
+      "verification": "SIMULATED_HW",
+      "tests": [
+        "backend/tests/test_device_assignment.py::test_SCH_020_device_assignment"
+      ],
+      "files": [
+        "backend/src/gpu/manager.py",
+        "backend/src/gpu/models.py"
+      ],
+      "evidence": "",
+      "notes": "GPU device assignment policy with memory headroom checking and lifecycle release",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-030": {
+      "id": "SCH-030",
+      "feature": "Model metadata",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area Model & Runtime Management",
+      "rank": 20,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T12:57:28.163690+00:00",
+      "completed_at": "2026-10-24T12:59:22.950494+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_model_metadata.py::test_SCH_030_model_metadata"
+      ],
+      "files": [
+        "backend/src/models/registry.py"
+      ],
+      "evidence": "",
+      "notes": "Model architectural metadata and quantization parameter tracking in SQL registry",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-033": {
+      "id": "SCH-033",
+      "feature": "Model loading",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area Model & Runtime Management",
+      "rank": 19,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T12:57:28.236898+00:00",
+      "completed_at": "2026-10-24T13:01:53.392409+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_model_loading.py::test_SCH_033_model_loading"
+      ],
+      "files": [
+        "backend/src/models/loading.py",
+        "backend/tests/test_model_loading.py"
+      ],
+      "evidence": "",
+      "notes": "Model loading coordinator managing asynchronous state transitions and residency in SQL",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-038": {
+      "id": "SCH-038",
+      "feature": "Model memory footprint",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area Model & Runtime Management",
+      "rank": 21,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T12:57:28.315686+00:00",
+      "completed_at": "2026-10-24T13:04:17.476821+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_model_memory_footprint.py::test_SCH_038_model_memory_footprint"
+      ],
+      "files": [
+        "backend/src/models/footprint.py",
+        "backend/tests/test_model_memory_footprint.py"
+      ],
+      "evidence": "",
+      "notes": "Model memory footprint computation with precision scaling and SQL persistence",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-042": {
+      "id": "SCH-042",
+      "feature": "Runtime selection",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area Model & Runtime Management",
+      "rank": 22,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:04:33.962967+00:00",
+      "completed_at": "2026-10-24T13:06:13.348073+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_runtime_selection.py::test_SCH_042_runtime_selection"
+      ],
+      "files": [
+        "backend/src/models/runtime.py"
+      ],
+      "evidence": "",
+      "notes": "Inference runtime selection engine with hardware compute capability and feature matching in SQL store",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-044": {
+      "id": "SCH-044",
+      "feature": "KV-cache capacity tracking",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area KV Cache & Memory",
+      "rank": 13,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:06:40.676186+00:00",
+      "completed_at": "2026-10-24T13:08:35.134679+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_kv_cache_capacity_tracking.py::test_SCH_044_kv_cache_capacity_tracking"
+      ],
+      "files": [
+        "backend/src/kv/capacity.py"
+      ],
+      "evidence": "",
+      "notes": "KV cache capacity tracking with block utilization metrics and SQL snapshot persistence",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-047": {
+      "id": "SCH-047",
+      "feature": "KV-cache reuse",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area KV Cache & Memory",
+      "rank": 15,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:06:40.759773+00:00",
+      "completed_at": "2026-10-24T13:10:35.329435+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_kv_cache_reuse.py::test_SCH_047_kv_cache_reuse"
+      ],
+      "files": [
+        "backend/src/kv/reuse.py"
+      ],
+      "evidence": "",
+      "notes": "Prefix-aware KV cache reuse tracking with block savings and SQL audit telemetry",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-051": {
+      "id": "SCH-051",
+      "feature": "Memory pressure detection",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area KV Cache & Memory",
+      "rank": 14,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:06:40.838450+00:00",
+      "completed_at": "2026-10-24T13:12:15.553206+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_memory_pressure_detection.py::test_SCH_051_memory_pressure_detection"
+      ],
+      "files": [
+        "backend/src/kv/pressure.py"
+      ],
+      "evidence": "",
+      "notes": "KV cache multi-watermark memory pressure detection and mitigation recommendation with SQL event logging",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-054": {
+      "id": "SCH-054",
+      "feature": "Per-request cache budget",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area KV Cache & Memory",
+      "rank": 12,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:12:34.912852+00:00",
+      "completed_at": "2026-10-24T13:14:09.904576+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_per_request_cache_budget.py::test_SCH_054_per_request_cache_budget"
+      ],
+      "files": [
+        "backend/src/kv/budget.py"
+      ],
+      "evidence": "",
+      "notes": "Per-request KV cache budget enforcement preventing over-commit with SQL state tracking",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-055": {
+      "id": "SCH-055",
+      "feature": "Tenant cache quotas",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area KV Cache & Memory",
+      "rank": 11,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:12:35.029111+00:00",
+      "completed_at": "2026-10-24T13:15:50.753227+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_tenant_cache_quotas.py::test_SCH_055_tenant_cache_quotas"
+      ],
+      "files": [
+        "backend/src/kv/quota.py"
+      ],
+      "evidence": "",
+      "notes": "Strict tenant KV-cache quota limits and cross-tenant isolation with SQL persistence",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-056": {
+      "id": "SCH-056",
+      "feature": "Cache hit-rate metrics",
+      "layers": [
+        "BE",
+        "DB"
+      ],
+      "priority": "P0",
+      "area": "Area KV Cache & Memory",
+      "rank": 16,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:12:35.148669+00:00",
+      "completed_at": "2026-10-24T13:17:52.836600+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_cache_hit_rate_metrics.py::test_SCH_056_cache_hit_rate_metrics"
+      ],
+      "files": [
+        "backend/src/kv/metrics.py"
+      ],
+      "evidence": "",
+      "notes": "KV cache prefix hit-rate metrics tracking and SQL window telemetry persistence",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-058": {
+      "id": "SCH-058",
+      "feature": "Dynamic batching",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Batching & Throughput",
+      "rank": 30,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:18:10.821395+00:00",
+      "completed_at": "2026-10-24T13:20:28.432150+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_dynamic_batching.py::test_SCH_058_dynamic_batching"
+      ],
+      "files": [
+        "backend/src/batching/dynamic.py"
+      ],
+      "evidence": "",
+      "notes": "Dynamic batching engine with load-adaptive sizing and priority ordering",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-060": {
+      "id": "SCH-060",
+      "feature": "Batch formation window",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Batching & Throughput",
+      "rank": 31,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:18:10.898009+00:00",
+      "completed_at": "2026-10-24T13:21:44.052785+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_batch_formation_window.py::test_SCH_060_batch_formation_window"
+      ],
+      "files": [
+        "backend/src/batching/dynamic.py"
+      ],
+      "evidence": "",
+      "notes": "Batch formation window timeout with early max-size trigger and injectable clock",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-063": {
+      "id": "SCH-063",
+      "feature": "Prefill batching",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Batching & Throughput",
+      "rank": 32,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:18:10.972327+00:00",
+      "completed_at": "2026-10-24T13:23:28.641398+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_prefill_batching.py::test_SCH_063_prefill_batching"
+      ],
+      "files": [
+        "backend/src/batching/prefill.py"
+      ],
+      "evidence": "",
+      "notes": "Prefill batching engine with token budget gating and transition to decode phase",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-064": {
+      "id": "SCH-064",
+      "feature": "Decode batching",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Batching & Throughput",
+      "rank": 33,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:21:55.399594+00:00",
+      "completed_at": "2026-10-24T13:24:57.530792+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_decode_batching.py::test_SCH_064_decode_batching"
+      ],
+      "files": [
+        "backend/src/batching/decode.py"
+      ],
+      "evidence": "",
+      "notes": "Synchronous multi-sequence decode batching engine with per-step KV slot advancement and automated memory reclamation",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-072": {
+      "id": "SCH-072",
+      "feature": "GPU-aware routing",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Request Routing & Load Balancing",
+      "rank": 26,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:25:15.599229+00:00",
+      "completed_at": "2026-10-24T13:27:34.205387+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_gpu_aware_routing.py::test_SCH_072_gpu_aware_routing"
+      ],
+      "files": [
+        "backend/src/routing/router.py"
+      ],
+      "evidence": "",
+      "notes": "GPU-aware request routing with memory headroom, thermal throttling protection, and utilization selection",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-074": {
+      "id": "SCH-074",
+      "feature": "Queue-length routing",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Request Routing & Load Balancing",
+      "rank": 27,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:25:15.675302+00:00",
+      "completed_at": "2026-10-24T13:29:02.818467+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_queue_length_routing.py::test_SCH_074_queue_length_routing"
+      ],
+      "files": [
+        "backend/src/routing/router.py"
+      ],
+      "evidence": "",
+      "notes": "Queue-length routing with max queue depth load shedding",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-075": {
+      "id": "SCH-075",
+      "feature": "Latency-aware routing",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Request Routing & Load Balancing",
+      "rank": 28,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:25:15.753393+00:00",
+      "completed_at": "2026-10-24T13:30:22.484440+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_latency_aware_routing.py::test_SCH_075_latency_aware_routing"
+      ],
+      "files": [
+        "backend/src/routing/router.py"
+      ],
+      "evidence": "",
+      "notes": "EWMA latency-aware request routing with TTFT and ITL decay",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-082": {
+      "id": "SCH-082",
+      "feature": "Replica health checks",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Request Routing & Load Balancing",
+      "rank": 6,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:30:52.410826+00:00",
+      "completed_at": "2026-10-24T13:33:04.140322+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_replica_health_checks.py::test_SCH_082_replica_health_checks"
+      ],
+      "files": [
+        "backend/src/routing/router.py"
+      ],
+      "evidence": "",
+      "notes": "Replica health checks with consecutive failure/recovery thresholds and latency recording",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-084": {
+      "id": "SCH-084",
+      "feature": "Replica failover",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Request Routing & Load Balancing",
+      "rank": 5,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:30:52.411627+00:00",
+      "completed_at": "2026-10-24T13:35:07.930902+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_replica_failover.py::test_SCH_084_replica_failover"
+      ],
+      "files": [
+        "backend/src/routing/router.py"
+      ],
+      "evidence": "",
+      "notes": "Replica failover during in-flight execution with candidate rerouting and history tracking",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-086": {
+      "id": "SCH-086",
+      "feature": "Distributed scheduler state",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Distributed Coordination",
+      "rank": 3,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:35:27.901746+00:00",
+      "completed_at": "2026-10-24T13:37:07.088749+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_distributed_state.py::test_SCH_086_distributed_scheduler_state"
+      ],
+      "files": [
+        "backend/src/coordination/state.py"
+      ],
+      "evidence": "",
+      "notes": "Distributed scheduler state synchronization across leader and followers with versioned snapshots and fencing tokens",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-087": {
+      "id": "SCH-087",
+      "feature": "Shared queue coordination",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Distributed Coordination",
+      "rank": 4,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:35:27.903284+00:00",
+      "completed_at": "2026-10-24T13:38:29.560913+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_shared_queue.py::test_SCH_087_shared_queue_coordination"
+      ],
+      "files": [
+        "backend/src/coordination/shared_queue.py"
+      ],
+      "evidence": "",
+      "notes": "Shared distributed queue coordination with safe leases, ack/nack, and expiration recovery",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-092": {
+      "id": "SCH-092",
+      "feature": "Worker discovery",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Distributed Coordination",
+      "rank": 29,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:35:27.903497+00:00",
+      "completed_at": "2026-10-24T13:39:41.609875+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_worker_discovery.py::test_SCH_092_worker_discovery"
+      ],
+      "files": [
+        "backend/src/coordination/discovery.py"
+      ],
+      "evidence": "",
+      "notes": "Dynamic worker discovery with automated capability negotiation and resource-based filtering",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-094": {
+      "id": "SCH-094",
+      "feature": "Scheduler failover",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Distributed Coordination",
+      "rank": 1,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:39:50.709977+00:00",
+      "completed_at": "2026-10-24T13:42:29.486894+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_scheduler_failover.py::test_SCH_094_scheduler_failover"
+      ],
+      "files": [
+        "backend/src/coordination/failover.py",
+        "backend/tests/test_scheduler_failover.py"
+      ],
+      "evidence": "",
+      "notes": "Automated scheduler leader failover with heartbeat monitoring and fencing token protection",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-095": {
+      "id": "SCH-095",
+      "feature": "State recovery",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Distributed Coordination",
+      "rank": 2,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:39:50.711133+00:00",
+      "completed_at": "2026-10-24T13:44:18.642177+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_state_recovery.py::test_SCH_095_state_recovery"
+      ],
+      "files": [
+        "backend/src/coordination/state_recovery.py",
+        "backend/tests/test_state_recovery.py"
+      ],
+      "evidence": "",
+      "notes": "Scheduler crash state recovery guaranteeing zero lost and zero duplicated requests",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-102": {
+      "id": "SCH-102",
+      "feature": "Scheduler API",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Backend APIs & Control Plane",
+      "rank": 34,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:44:38.799681+00:00",
+      "completed_at": "2026-10-24T13:48:15.165073+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_scheduler_api.py::test_SCH_102_scheduler_api"
+      ],
+      "files": [
+        "backend/src/api/app.py"
+      ],
+      "evidence": "",
+      "notes": "Scheduler control plane API with status inspection and dynamic parameter reconfiguration",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-103": {
+      "id": "SCH-103",
+      "feature": "Queue API",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Backend APIs & Control Plane",
+      "rank": 35,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:44:38.869432+00:00",
+      "completed_at": "2026-10-24T13:49:28.661371+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_queue_api.py::test_SCH_103_queue_api"
+      ],
+      "files": [
+        "backend/src/api/app.py"
+      ],
+      "evidence": "",
+      "notes": "Queue API with queue statistics, per-model queue inspection, and cancellation endpoints",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-105": {
+      "id": "SCH-105",
+      "feature": "Worker API",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Backend APIs & Control Plane",
+      "rank": 36,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:44:38.936007+00:00",
+      "completed_at": "2026-10-24T13:51:33.096457+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_worker_api.py::test_SCH_105_worker_api"
+      ],
+      "files": [
+        "backend/src/api/app.py",
+        "backend/tests/test_worker_api.py"
+      ],
+      "evidence": "",
+      "notes": "Worker registration, heartbeat telemetry, and drain control API",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-107": {
+      "id": "SCH-107",
+      "feature": "Health endpoint",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Backend APIs & Control Plane",
+      "rank": 37,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:51:47.746998+00:00",
+      "completed_at": "2026-10-24T13:55:18.821606+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_health_endpoint.py::test_SCH_107_health_endpoint"
+      ],
+      "files": [
+        "backend/src/api/app.py"
+      ],
+      "evidence": "",
+      "notes": "Health endpoint with component liveness checks and degraded status reporting",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-108": {
+      "id": "SCH-108",
+      "feature": "Readiness endpoint",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Backend APIs & Control Plane",
+      "rank": 38,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:51:47.822352+00:00",
+      "completed_at": "2026-10-24T13:55:48.587973+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_health_readiness_metrics.py::test_SCH_108_readiness_endpoint"
+      ],
+      "files": [
+        "backend/src/api/app.py",
+        "backend/tests/test_health_readiness_metrics.py"
+      ],
+      "evidence": "",
+      "notes": "Readiness probe endpoint checking queue headroom and KV cache availability",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-109": {
+      "id": "SCH-109",
+      "feature": "Metrics endpoint",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Backend APIs & Control Plane",
+      "rank": 39,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:51:47.899917+00:00",
+      "completed_at": "2026-10-24T13:55:59.810305+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_health_readiness_metrics.py::test_SCH_109_metrics_endpoint"
+      ],
+      "files": [
+        "backend/src/api/app.py",
+        "backend/tests/test_health_readiness_metrics.py"
+      ],
+      "evidence": "",
+      "notes": "Prometheus metrics endpoint exporting scheduler, batch, queue, and latency telemetry",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-113": {
+      "id": "SCH-113",
+      "feature": "OpenTelemetry tracing",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Observability & Reliability",
+      "rank": 40,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:56:24.135912+00:00",
+      "completed_at": "2026-10-24T14:00:02.192963+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_opentelemetry_tracing.py::test_SCH_113_opentelemetry_tracing"
+      ],
+      "files": [
+        "backend/src/observability/tracing.py"
+      ],
+      "evidence": "",
+      "notes": "OpenTelemetry distributed tracing for inference request lifecycle and child scheduling operations",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-114": {
+      "id": "SCH-114",
+      "feature": "Structured logs",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Observability & Reliability",
+      "rank": 41,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:56:24.214173+00:00",
+      "completed_at": "2026-10-24T14:00:21.855012+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_observability_suite.py::test_SCH_114_structured_logs"
+      ],
+      "files": [
+        "backend/src/observability/logging.py",
+        "backend/tests/test_observability_suite.py"
+      ],
+      "evidence": "",
+      "notes": "Structured JSON logging with contextual metadata and exception tracking",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-115": {
+      "id": "SCH-115",
+      "feature": "Request decision logs",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Observability & Reliability",
+      "rank": 42,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T13:56:24.285080+00:00",
+      "completed_at": "2026-10-24T14:00:27.645783+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_observability_suite.py::test_SCH_115_request_decision_logs_redaction"
+      ],
+      "files": [
+        "backend/src/observability/decision_log.py",
+        "backend/tests/test_observability_suite.py"
+      ],
+      "evidence": "",
+      "notes": "Request decision logging with strict prompt redaction preserving zero raw text",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-116": {
+      "id": "SCH-116",
+      "feature": "Queue wait-time metrics",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Observability & Reliability",
+      "rank": 43,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T14:00:41.300155+00:00",
+      "completed_at": "2026-10-24T14:04:28.388022+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_latency_and_wait_metrics.py::test_SCH_116_queue_wait_time_metrics"
+      ],
+      "files": [
+        "backend/src/observability/metrics.py"
+      ],
+      "evidence": "",
+      "notes": "Queue wait-time metrics histogram per model",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-119": {
+      "id": "SCH-119",
+      "feature": "End-to-end latency metrics",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P0",
+      "area": "Area Observability & Reliability",
+      "rank": 44,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T14:00:41.371606+00:00",
+      "completed_at": "2026-10-24T14:04:35.546734+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_latency_and_wait_metrics.py::test_SCH_119_end_to_end_latency_metrics"
+      ],
+      "files": [
+        "backend/src/observability/metrics.py"
+      ],
+      "evidence": "",
+      "notes": "End-to-end inference request duration metrics histogram",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-125": {
+      "id": "SCH-125",
+      "feature": "API-key authentication",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P2",
+      "area": "Area Security & AI/ML Optimization",
+      "rank": 45,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T14:05:01.322665+00:00",
+      "completed_at": "2026-10-24T14:07:40.680618+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_api_key_auth.py::test_SCH_125_api_key_authentication"
+      ],
+      "files": [
+        "backend/src/security/auth.py"
+      ],
+      "evidence": "",
+      "notes": "API-key authentication with SHA-256 hash validation, tenant association, and token revocation",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-128": {
+      "id": "SCH-128",
+      "feature": "Tenant isolation",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P2",
+      "area": "Area Security & AI/ML Optimization",
+      "rank": 46,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T14:05:01.323333+00:00",
+      "completed_at": "2026-10-24T14:09:51.953382+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_security_suite.py::test_SCH_128_tenant_isolation"
+      ],
+      "files": [
+        "backend/src/security/isolation.py"
+      ],
+      "evidence": "",
+      "notes": "Multi-tenant resource and queue isolation guard",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-130": {
+      "id": "SCH-130",
+      "feature": "Rate limiting",
+      "layers": [
+        "BE"
+      ],
+      "priority": "P2",
+      "area": "Area Security & AI/ML Optimization",
+      "rank": 47,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T14:05:01.323487+00:00",
+      "completed_at": "2026-10-24T14:09:56.290617+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_security_suite.py::test_SCH_130_rate_limiting"
+      ],
+      "files": [
+        "backend/src/security/rate_limit.py"
+      ],
+      "evidence": "",
+      "notes": "Sliding window rate limiter with per-tenant limits and Retry-After throttling",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-143": {
+      "id": "SCH-143",
+      "feature": "Live request view",
+      "layers": [
+        "FE",
+        "BE"
+      ],
+      "priority": "P1",
+      "area": "Area Frontend / Operations Console",
+      "rank": 48,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T14:10:07.593018+00:00",
+      "completed_at": "2026-10-24T14:18:12.585165+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_ops_console_endpoints.py::test_SCH_143_live_request_view"
+      ],
+      "files": [
+        "frontend/src/LiveRequestView.tsx",
+        "backend/src/api/app.py",
+        "backend/tests/test_ops_console_endpoints.py"
+      ],
+      "evidence": "",
+      "notes": "Live in-flight requests console table and telemetry API",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-144": {
+      "id": "SCH-144",
+      "feature": "Request detail page",
+      "layers": [
+        "FE",
+        "BE"
+      ],
+      "priority": "P1",
+      "area": "Area Frontend / Operations Console",
+      "rank": 49,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T14:10:07.593801+00:00",
+      "completed_at": "2026-10-24T14:18:19.690952+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_ops_console_endpoints.py::test_SCH_144_request_detail_page"
+      ],
+      "files": [
+        "frontend/src/RequestDetailPage.tsx",
+        "backend/src/api/app.py",
+        "backend/tests/test_ops_console_endpoints.py"
+      ],
+      "evidence": "",
+      "notes": "Request detail inspector page and telemetry endpoint",
+      "final_blocker": null,
+      "sabotage": "yes"
+    },
+    "SCH-146": {
+      "id": "SCH-146",
+      "feature": "Latency charts",
+      "layers": [
+        "FE",
+        "BE"
+      ],
+      "priority": "P1",
+      "area": "Area Frontend / Operations Console",
+      "rank": 50,
+      "state": "COMPLETED",
+      "started_at": "2026-10-24T14:10:07.593994+00:00",
+      "completed_at": "2026-10-24T14:18:26.778301+00:00",
+      "verification": "REAL",
+      "tests": [
+        "backend/tests/test_ops_console_endpoints.py::test_SCH_146_latency_charts"
+      ],
+      "files": [
+        "frontend/src/LatencyCharts.tsx",
+        "backend/src/api/app.py",
+        "backend/tests/test_ops_console_endpoints.py"
+      ],
+      "evidence": "",
+      "notes": "Latency percentiles distribution charts and endpoint",
+      "final_blocker": null,
+      "sabotage": "yes"
+    }
+  }
+}

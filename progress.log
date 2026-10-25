@@ -1,0 +1,181 @@
+2026-10-24T09:18:54.372881+00:00 | ALL | NONE -> TODO | Initialized 40 features
+2026-10-24T09:19:10.261988+00:00 | SCH-002 | TODO -> WORKING | Started feature
+2026-10-24T09:19:10.262451+00:00 | SCH-003 | TODO -> WORKING | Started feature
+2026-10-24T09:19:10.262601+00:00 | SCH-005 | TODO -> WORKING | Started feature
+2026-10-24T09:25:46.460989+00:00 | SCH-002 | WORKING -> COMPLETED | Completed: Request admission controller with prompt, model, and queue bounds
+2026-10-24T09:25:53.978221+00:00 | SCH-003 | WORKING -> COMPLETED | Completed: QueueManager submit, depth, and cancel operations
+2026-10-24T09:25:59.655805+00:00 | SCH-005 | WORKING -> COMPLETED | Completed: Strict FIFO queue ordering with O(1) indexed lookups
+2026-10-24T09:26:30.772303+00:00 | SCH-006 | TODO -> WORKING | Started feature
+2026-10-24T09:26:30.773332+00:00 | SCH-007 | TODO -> WORKING | Started feature
+2026-10-24T09:26:30.773667+00:00 | SCH-011 | TODO -> WORKING | Started feature
+2026-10-24T09:29:02.906210+00:00 | SCH-006 | WORKING -> COMPLETED | Completed: PriorityQueue with arrival-time FIFO tie breaking
+2026-10-24T09:29:17.962509+00:00 | SCH-007 | WORKING -> COMPLETED | Completed: Weighted Fair Queue using Deficit Round Robin over tenant weights
+2026-10-24T09:29:34.111660+00:00 | SCH-011 | WORKING -> COMPLETED | Completed: Dynamic priority aging preventing low-priority request starvation
+2026-10-24T09:29:54.125916+00:00 | SCH-012 | TODO -> WORKING | Started feature
+2026-10-24T09:29:54.126658+00:00 | SCH-014 | TODO -> WORKING | Started feature
+2026-10-24T09:31:22.321784+00:00 | SCH-012 | WORKING -> COMPLETED | Completed: Backpressure controller with hysteresis and dynamic retry-after
+2026-10-24T09:31:27.392512+00:00 | SCH-014 | WORKING -> COMPLETED | Completed: Request cancellation with cooperative tokens and queue status transitions
+2026-10-24T09:31:44.961031+00:00 | SCH-015 | TODO -> WORKING | Started feature
+2026-10-24T09:31:44.961532+00:00 | SCH-017 | TODO -> WORKING | Started feature
+2026-10-24T09:31:44.961679+00:00 | SCH-024 | TODO -> WORKING | Started feature
+2026-10-24T09:34:31.856111+00:00 | SCH-015 | WORKING -> COMPLETED | Completed: GPU inventory with honest zero-GPU NVML telemetry and simulated HW adapter
+2026-10-24T09:34:38.084887+00:00 | SCH-017 | WORKING -> COMPLETED | Completed: GPU memory tracking with atomic updates and capacity limits
+2026-10-24T09:34:43.315810+00:00 | SCH-024 | WORKING -> COMPLETED | Completed: Memory admission control verifying headroom against GPU memory before dispatch
+2026-10-24T09:35:03.605410+00:00 | SCH-029 | TODO -> WORKING | Started feature
+2026-10-24T09:35:03.606001+00:00 | SCH-043 | TODO -> WORKING | Started feature
+2026-10-24T09:35:03.606164+00:00 | SCH-045 | TODO -> WORKING | Started feature
+2026-10-24T09:36:42.011488+00:00 | SCH-029 | WORKING -> COMPLETED | Completed: Model registry with durable SQL storage and parameter validation
+2026-10-24T09:36:49.298569+00:00 | SCH-043 | WORKING -> COMPLETED | Completed: Paged KV cache manager enforcing free+used==total and non-negative refcounts
+2026-10-24T09:36:55.252734+00:00 | SCH-045 | WORKING -> COMPLETED | Completed: Block-level KV cache allocation and append-slot decoding
+2026-10-24T09:37:09.970314+00:00 | SCH-046 | TODO -> WORKING | Started feature
+2026-10-24T09:37:09.970831+00:00 | SCH-048 | TODO -> WORKING | Started feature
+2026-10-24T09:37:09.970993+00:00 | SCH-049 | TODO -> WORKING | Started feature
+2026-10-24T09:38:26.824576+00:00 | SCH-046 | WORKING -> COMPLETED | Completed: KV-cache block reclamation with zero-leak invariant checks
+2026-10-24T09:38:32.983031+00:00 | SCH-048 | WORKING -> COMPLETED | Completed: Prefix caching with block hash indexing and refcounted sharing
+2026-10-24T09:38:41.436313+00:00 | SCH-049 | WORKING -> COMPLETED | Completed: Paged KV cache logical-to-physical address translation and dynamic slot appending
+2026-10-24T09:39:05.626243+00:00 | SCH-052 | TODO -> WORKING | Started feature
+2026-10-24T09:39:05.626717+00:00 | SCH-053 | TODO -> WORKING | Started feature
+2026-10-24T09:39:05.626871+00:00 | SCH-057 | TODO -> WORKING | Started feature
+2026-10-24T09:42:44.504051+00:00 | SCH-052 | WORKING -> COMPLETED | Completed: OOM prevention verifying memory headroom against high watermark ratio
+2026-10-24T09:42:50.515655+00:00 | SCH-053 | WORKING -> COMPLETED | Completed: KV-cache LRU eviction policy strictly guarding active blocks with ref_count>0
+2026-10-24T09:42:57.913501+00:00 | SCH-057 | WORKING -> COMPLETED | Completed: Continuous batching engine with iteration-level request joins and leaves
+2026-10-24T09:43:14.911311+00:00 | SCH-061 | TODO -> WORKING | Started feature
+2026-10-24T09:43:14.912607+00:00 | SCH-062 | TODO -> WORKING | Started feature
+2026-10-24T09:43:14.913088+00:00 | SCH-065 | TODO -> WORKING | Started feature
+2026-10-24T09:45:16.428662+00:00 | SCH-061 | WORKING -> COMPLETED | Completed: Max batch size enforcement rejecting excess concurrent sequences
+2026-10-24T09:45:24.244797+00:00 | SCH-062 | WORKING -> COMPLETED | Completed: Token-budget batch scheduler enforcing cumulative iteration limits
+2026-10-24T09:45:31.478106+00:00 | SCH-065 | WORKING -> COMPLETED | Completed: Mixed prefill and decode execution in a single continuous iteration
+2026-10-24T09:45:48.685166+00:00 | SCH-071 | TODO -> WORKING | Started feature
+2026-10-24T09:45:48.688779+00:00 | SCH-073 | TODO -> WORKING | Started feature
+2026-10-24T09:45:48.689355+00:00 | SCH-083 | TODO -> WORKING | Started feature
+2026-10-24T09:47:03.667042+00:00 | SCH-071 | WORKING -> COMPLETED | Completed: Model-aware request routing matching loaded models across replica inventory
+2026-10-24T09:47:13.118309+00:00 | SCH-073 | WORKING -> COMPLETED | Completed: Least-loaded worker replica routing balancing active requests and token load
+2026-10-24T09:47:22.527219+00:00 | SCH-083 | WORKING -> COMPLETED | Completed: Replica draining cutting off new traffic while allowing in-flight requests to complete
+2026-10-24T09:47:40.783903+00:00 | SCH-085 | TODO -> WORKING | Started feature
+2026-10-24T09:47:40.784983+00:00 | SCH-089 | TODO -> WORKING | Started feature
+2026-10-24T09:47:40.785433+00:00 | SCH-090 | TODO -> WORKING | Started feature
+2026-10-24T09:49:06.592283+00:00 | SCH-085 | WORKING -> COMPLETED | Completed: Leader election with active lease check and fencing token increment
+2026-10-24T09:49:14.295977+00:00 | SCH-089 | WORKING -> COMPLETED | Completed: Lease renewals and fencing token validation strictly rejecting deposed leader writes
+2026-10-24T09:49:21.081554+00:00 | SCH-090 | WORKING -> COMPLETED | Completed: Worker registration with endpoint, supported models, and capability tracking
+2026-10-24T09:49:46.084327+00:00 | SCH-091 | TODO -> WORKING | Started feature
+2026-10-24T09:49:46.085683+00:00 | SCH-096 | TODO -> WORKING | Started feature
+2026-10-24T09:49:46.086234+00:00 | SCH-098 | TODO -> WORKING | Started feature
+2026-10-24T09:51:19.283627+00:00 | SCH-091 | WORKING -> COMPLETED | Completed: Worker heartbeats and deterministic timeout failure detection
+2026-10-24T09:51:27.715832+00:00 | SCH-096 | WORKING -> COMPLETED | Completed: Effectively-once dispatch proof using monotonically incrementing fencing tokens and deduplication store
+2026-10-24T09:51:33.579633+00:00 | SCH-098 | WORKING -> COMPLETED | Completed: Duplicate dispatch prevention across worker pool
+2026-10-24T09:51:54.615656+00:00 | SCH-097 | TODO -> WORKING | Started feature
+2026-10-24T09:51:54.616415+00:00 | SCH-099 | TODO -> WORKING | Started feature
+2026-10-24T09:51:54.616589+00:00 | SCH-100 | TODO -> WORKING | Started feature
+2026-10-24T09:55:28.872350+00:00 | SCH-097 | WORKING -> COMPLETED | Completed: At-least-once recovery reclaiming in-flight requests from dead workers and re-queuing
+2026-10-24T09:55:36.848260+00:00 | SCH-099 | WORKING -> COMPLETED | Completed: Synchronous inference request REST API with admission validation
+2026-10-24T09:55:43.828427+00:00 | SCH-100 | WORKING -> COMPLETED | Completed: Streaming inference API over Server-Sent Events with incremental token events
+2026-10-24T09:56:02.534001+00:00 | SCH-112 | TODO -> WORKING | Started feature
+2026-10-24T09:56:02.535069+00:00 | SCH-117 | TODO -> WORKING | Started feature
+2026-10-24T09:56:02.535602+00:00 | SCH-118 | TODO -> WORKING | Started feature
+2026-10-24T09:58:22.096638+00:00 | SCH-112 | WORKING -> COMPLETED | Completed: Prometheus metrics exposition endpoint with queues, batches, and KV gauges
+2026-10-24T09:58:33.724512+00:00 | SCH-117 | WORKING -> COMPLETED | Completed: Time To First Token (TTFT) Prometheus histogram latency observation
+2026-10-24T09:58:40.479940+00:00 | SCH-118 | WORKING -> COMPLETED | Completed: Time Per Output Token (TPOT) decode step duration histogram observation
+2026-10-24T09:59:03.569378+00:00 | SCH-138 | TODO -> WORKING | Started feature
+2026-10-24T09:59:03.570416+00:00 | SCH-139 | TODO -> WORKING | Started feature
+2026-10-24T10:01:34.772711+00:00 | SCH-138 | WORKING -> COMPLETED | Completed: Scheduler dashboard with real-time continuous batching and KV cache telemetry
+2026-10-24T10:01:43.134441+00:00 | SCH-139 | WORKING -> COMPLETED | Completed: Queue dashboard with depth tracking, request inspection, and priority badges
+2026-10-24T12:30:13.656958+00:00 | SCH-001 | TODO -> WORKING | Started feature
+2026-10-24T12:32:46.659545+00:00 | SCH-001 | WORKING -> COMPLETED | Completed: Configurable scheduling policy model supporting FIFO, Priority, Weighted-Fair, and Deadline-Aware evaluation
+2026-10-24T12:33:19.075402+00:00 | SCH-004 | TODO -> WORKING | Started feature
+2026-10-24T12:36:49.025589+00:00 | SCH-004 | WORKING -> COMPLETED | Completed: Priority classes registry with tiered base scores, preemption flags, and anti-starvation aging
+2026-10-24T12:37:30.086702+00:00 | SCH-008 | TODO -> WORKING | Started feature
+2026-10-24T12:41:52.339077+00:00 | SCH-008 | WORKING -> COMPLETED | Completed: Deadline-aware Earliest Feasible Deadline First (EDF) scheduler with deprioritize/reject policies
+2026-10-24T12:42:18.135391+00:00 | SCH-009 | TODO -> WORKING | Started feature
+2026-10-24T12:44:12.489592+00:00 | SCH-009 | WORKING -> COMPLETED | Completed: Tenant-aware scheduler enforcing multi-tenant concurrency quotas and fair-share candidate filtering
+2026-10-24T12:44:29.557674+00:00 | SCH-010 | TODO -> WORKING | Started feature
+2026-10-24T12:46:16.230192+00:00 | SCH-010 | WORKING -> COMPLETED | Completed: Dedicated per-model queues guaranteeing dispatch strictly to workers with requested model loaded in VRAM
+2026-10-24T12:46:36.243678+00:00 | SCH-013 | TODO -> WORKING | Started feature
+2026-10-24T12:49:14.349602+00:00 | SCH-013 | WORKING -> COMPLETED | Completed: Structured admission rejection with retryable classification and reason codes
+2026-10-24T12:50:06.987753+00:00 | SCH-016 | TODO -> WORKING | Started feature
+2026-10-24T12:51:09.822313+00:00 | SCH-018 | TODO -> WORKING | Started feature
+2026-10-24T12:51:09.899102+00:00 | SCH-020 | TODO -> WORKING | Started feature
+2026-10-24T12:53:08.360158+00:00 | SCH-016 | WORKING -> COMPLETED | Completed: GPU health detection evaluating thermal, ECC, and driver faults with SQL state persistence
+2026-10-24T12:55:03.442645+00:00 | SCH-018 | WORKING -> COMPLETED | Completed: GPU compute and memory utilization metrics tracking with time-series persistence in SQL
+2026-10-24T12:57:04.169216+00:00 | SCH-020 | WORKING -> COMPLETED | Completed: GPU device assignment policy with memory headroom checking and lifecycle release
+2026-10-24T12:57:28.163900+00:00 | SCH-030 | TODO -> WORKING | Started feature
+2026-10-24T12:57:28.237086+00:00 | SCH-033 | TODO -> WORKING | Started feature
+2026-10-24T12:57:28.315956+00:00 | SCH-038 | TODO -> WORKING | Started feature
+2026-10-24T12:59:22.956637+00:00 | SCH-030 | WORKING -> COMPLETED | Completed: Model architectural metadata and quantization parameter tracking in SQL registry
+2026-10-24T13:01:53.398006+00:00 | SCH-033 | WORKING -> COMPLETED | Completed: Model loading coordinator managing asynchronous state transitions and residency in SQL
+2026-10-24T13:04:17.482313+00:00 | SCH-038 | WORKING -> COMPLETED | Completed: Model memory footprint computation with precision scaling and SQL persistence
+2026-10-24T13:04:33.963244+00:00 | SCH-042 | TODO -> WORKING | Started feature
+2026-10-24T13:06:13.353462+00:00 | SCH-042 | WORKING -> COMPLETED | Completed: Inference runtime selection engine with hardware compute capability and feature matching in SQL store
+2026-10-24T13:06:40.676427+00:00 | SCH-044 | TODO -> WORKING | Started feature
+2026-10-24T13:06:40.760595+00:00 | SCH-047 | TODO -> WORKING | Started feature
+2026-10-24T13:06:40.838731+00:00 | SCH-051 | TODO -> WORKING | Started feature
+2026-10-24T13:08:35.144486+00:00 | SCH-044 | WORKING -> COMPLETED | Completed: KV cache capacity tracking with block utilization metrics and SQL snapshot persistence
+2026-10-24T13:10:35.335446+00:00 | SCH-047 | WORKING -> COMPLETED | Completed: Prefix-aware KV cache reuse tracking with block savings and SQL audit telemetry
+2026-10-24T13:12:15.570142+00:00 | SCH-051 | WORKING -> COMPLETED | Completed: KV cache multi-watermark memory pressure detection and mitigation recommendation with SQL event logging
+2026-10-24T13:12:34.913110+00:00 | SCH-054 | TODO -> WORKING | Started feature
+2026-10-24T13:12:35.029574+00:00 | SCH-055 | TODO -> WORKING | Started feature
+2026-10-24T13:12:35.149001+00:00 | SCH-056 | TODO -> WORKING | Started feature
+2026-10-24T13:14:09.909929+00:00 | SCH-054 | WORKING -> COMPLETED | Completed: Per-request KV cache budget enforcement preventing over-commit with SQL state tracking
+2026-10-24T13:15:50.759434+00:00 | SCH-055 | WORKING -> COMPLETED | Completed: Strict tenant KV-cache quota limits and cross-tenant isolation with SQL persistence
+2026-10-24T13:17:52.843083+00:00 | SCH-056 | WORKING -> COMPLETED | Completed: KV cache prefix hit-rate metrics tracking and SQL window telemetry persistence
+2026-10-24T13:18:10.821611+00:00 | SCH-058 | TODO -> WORKING | Started feature
+2026-10-24T13:18:10.898430+00:00 | SCH-060 | TODO -> WORKING | Started feature
+2026-10-24T13:18:10.972690+00:00 | SCH-063 | TODO -> WORKING | Started feature
+2026-10-24T13:20:28.438448+00:00 | SCH-058 | WORKING -> COMPLETED | Completed: Dynamic batching engine with load-adaptive sizing and priority ordering
+2026-10-24T13:21:44.058332+00:00 | SCH-060 | WORKING -> COMPLETED | Completed: Batch formation window timeout with early max-size trigger and injectable clock
+2026-10-24T13:21:55.400095+00:00 | SCH-064 | TODO -> WORKING | Started feature
+2026-10-24T13:23:28.647771+00:00 | SCH-063 | WORKING -> COMPLETED | Completed: Prefill batching engine with token budget gating and transition to decode phase
+2026-10-24T13:24:57.537504+00:00 | SCH-064 | WORKING -> COMPLETED | Completed: Synchronous multi-sequence decode batching engine with per-step KV slot advancement and automated memory reclamation
+2026-10-24T13:25:15.599496+00:00 | SCH-072 | TODO -> WORKING | Started feature
+2026-10-24T13:25:15.675550+00:00 | SCH-074 | TODO -> WORKING | Started feature
+2026-10-24T13:25:15.753623+00:00 | SCH-075 | TODO -> WORKING | Started feature
+2026-10-24T13:27:34.211604+00:00 | SCH-072 | WORKING -> COMPLETED | Completed: GPU-aware request routing with memory headroom, thermal throttling protection, and utilization selection
+2026-10-24T13:29:02.825025+00:00 | SCH-074 | WORKING -> COMPLETED | Completed: Queue-length routing with max queue depth load shedding
+2026-10-24T13:30:22.490747+00:00 | SCH-075 | WORKING -> COMPLETED | Completed: EWMA latency-aware request routing with TTFT and ITL decay
+2026-10-24T13:30:52.411087+00:00 | SCH-082 | TODO -> WORKING | Started feature
+2026-10-24T13:30:52.411652+00:00 | SCH-084 | TODO -> WORKING | Started feature
+2026-10-24T13:33:04.147301+00:00 | SCH-082 | WORKING -> COMPLETED | Completed: Replica health checks with consecutive failure/recovery thresholds and latency recording
+2026-10-24T13:35:07.936087+00:00 | SCH-084 | WORKING -> COMPLETED | Completed: Replica failover during in-flight execution with candidate rerouting and history tracking
+2026-10-24T13:35:27.902014+00:00 | SCH-086 | TODO -> WORKING | Started feature
+2026-10-24T13:35:27.903317+00:00 | SCH-087 | TODO -> WORKING | Started feature
+2026-10-24T13:35:27.903517+00:00 | SCH-092 | TODO -> WORKING | Started feature
+2026-10-24T13:37:07.095986+00:00 | SCH-086 | WORKING -> COMPLETED | Completed: Distributed scheduler state synchronization across leader and followers with versioned snapshots and fencing tokens
+2026-10-24T13:38:29.566807+00:00 | SCH-087 | WORKING -> COMPLETED | Completed: Shared distributed queue coordination with safe leases, ack/nack, and expiration recovery
+2026-10-24T13:39:41.615505+00:00 | SCH-092 | WORKING -> COMPLETED | Completed: Dynamic worker discovery with automated capability negotiation and resource-based filtering
+2026-10-24T13:39:50.710766+00:00 | SCH-094 | TODO -> WORKING | Started feature
+2026-10-24T13:39:50.711170+00:00 | SCH-095 | TODO -> WORKING | Started feature
+2026-10-24T13:42:29.492679+00:00 | SCH-094 | WORKING -> COMPLETED | Completed: Automated scheduler leader failover with heartbeat monitoring and fencing token protection
+2026-10-24T13:44:18.648050+00:00 | SCH-095 | WORKING -> COMPLETED | Completed: Scheduler crash state recovery guaranteeing zero lost and zero duplicated requests
+2026-10-24T13:44:38.799920+00:00 | SCH-102 | TODO -> WORKING | Started feature
+2026-10-24T13:44:38.869675+00:00 | SCH-103 | TODO -> WORKING | Started feature
+2026-10-24T13:44:38.936205+00:00 | SCH-105 | TODO -> WORKING | Started feature
+2026-10-24T13:48:15.170630+00:00 | SCH-102 | WORKING -> COMPLETED | Completed: Scheduler control plane API with status inspection and dynamic parameter reconfiguration
+2026-10-24T13:49:28.667903+00:00 | SCH-103 | WORKING -> COMPLETED | Completed: Queue API with queue statistics, per-model queue inspection, and cancellation endpoints
+2026-10-24T13:51:33.103250+00:00 | SCH-105 | WORKING -> COMPLETED | Completed: Worker registration, heartbeat telemetry, and drain control API
+2026-10-24T13:51:47.747293+00:00 | SCH-107 | TODO -> WORKING | Started feature
+2026-10-24T13:51:47.822565+00:00 | SCH-108 | TODO -> WORKING | Started feature
+2026-10-24T13:51:47.900176+00:00 | SCH-109 | TODO -> WORKING | Started feature
+2026-10-24T13:55:18.827547+00:00 | SCH-107 | WORKING -> COMPLETED | Completed: Health endpoint with component liveness checks and degraded status reporting
+2026-10-24T13:55:48.593245+00:00 | SCH-108 | WORKING -> COMPLETED | Completed: Readiness probe endpoint checking queue headroom and KV cache availability
+2026-10-24T13:55:59.815535+00:00 | SCH-109 | WORKING -> COMPLETED | Completed: Prometheus metrics endpoint exporting scheduler, batch, queue, and latency telemetry
+2026-10-24T13:56:24.136201+00:00 | SCH-113 | TODO -> WORKING | Started feature
+2026-10-24T13:56:24.214521+00:00 | SCH-114 | TODO -> WORKING | Started feature
+2026-10-24T13:56:24.285355+00:00 | SCH-115 | TODO -> WORKING | Started feature
+2026-10-24T14:00:02.199540+00:00 | SCH-113 | WORKING -> COMPLETED | Completed: OpenTelemetry distributed tracing for inference request lifecycle and child scheduling operations
+2026-10-24T14:00:21.860232+00:00 | SCH-114 | WORKING -> COMPLETED | Completed: Structured JSON logging with contextual metadata and exception tracking
+2026-10-24T14:00:27.651991+00:00 | SCH-115 | WORKING -> COMPLETED | Completed: Request decision logging with strict prompt redaction preserving zero raw text
+2026-10-24T14:00:41.300456+00:00 | SCH-116 | TODO -> WORKING | Started feature
+2026-10-24T14:00:41.371923+00:00 | SCH-119 | TODO -> WORKING | Started feature
+2026-10-24T14:04:28.394757+00:00 | SCH-116 | WORKING -> COMPLETED | Completed: Queue wait-time metrics histogram per model
+2026-10-24T14:04:35.552517+00:00 | SCH-119 | WORKING -> COMPLETED | Completed: End-to-end inference request duration metrics histogram
+2026-10-24T14:05:01.322900+00:00 | SCH-125 | TODO -> WORKING | Started feature
+2026-10-24T14:05:01.323357+00:00 | SCH-128 | TODO -> WORKING | Started feature
+2026-10-24T14:05:01.323507+00:00 | SCH-130 | TODO -> WORKING | Started feature
+2026-10-24T14:07:40.687160+00:00 | SCH-125 | WORKING -> COMPLETED | Completed: API-key authentication with SHA-256 hash validation, tenant association, and token revocation
+2026-10-24T14:09:51.960244+00:00 | SCH-128 | WORKING -> COMPLETED | Completed: Multi-tenant resource and queue isolation guard
+2026-10-24T14:09:56.296403+00:00 | SCH-130 | WORKING -> COMPLETED | Completed: Sliding window rate limiter with per-tenant limits and Retry-After throttling
+2026-10-24T14:10:07.593302+00:00 | SCH-143 | TODO -> WORKING | Started feature
+2026-10-24T14:10:07.593836+00:00 | SCH-144 | TODO -> WORKING | Started feature
+2026-10-24T14:10:07.594014+00:00 | SCH-146 | TODO -> WORKING | Started feature
+2026-10-24T14:18:12.592525+00:00 | SCH-143 | WORKING -> COMPLETED | Completed: Live in-flight requests console table and telemetry API
+2026-10-24T14:18:19.696238+00:00 | SCH-144 | WORKING -> COMPLETED | Completed: Request detail inspector page and telemetry endpoint
+2026-10-24T14:18:26.784457+00:00 | SCH-146 | WORKING -> COMPLETED | Completed: Latency percentiles distribution charts and endpoint

@@ -1,0 +1,49 @@
+### P15 LLM INFERENCE SCHEDULER — a control plane that admits, queues, batches, places and routes LLM inference requests across GPU workers with KV-cache-aware memory management and an ops console.
+
+Mission:
+Admit, queue, batch, place and route LLM inference requests across a fleet of GPU workers, with KV-cache-aware memory management, distributed coordination, and an operations console.
+
+Architecture:
+- scheduler (FastAPI + asyncio) run as >=3 replicas, only the leader dispatches; PostgreSQL = durable truth, Redis = hot queues and leases.
+- worker-agent registers, heartbeats, executes batches through a Runtime interface with:
+  (a) cpu-transformers running a small REAL model (<=0.5B parameters) on CPU so tokens are genuinely generated and streamed;
+  (b) sim — an explicitly labeled simulator for scale tests whose responses carry "simulated": true and whose UI rows show a SIMULATED badge.
+- GPU telemetry via a pynvml adapter; with no GPU the inventory honestly reports zero GPUs and tests inject a recorded-NVML fake through the adapter (verification SIMULATED_HW, stated).
+- KV-cache manager = real paged block allocator (fixed block size, free list, block tables per sequence, refcounts, hash-chained prefix blocks, LRU/priority eviction, per-request budget); it is the scheduler's accounting model, never presented as measured GPU memory.
+- A Clock abstraction (real + manual) so scheduling, aging, leases, backoff are tested deterministically.
+
+Hard Invariants:
+- KV allocator free+used==total always, no double free, refcount never negative, eviction never removes a block with refcount>0, OOM prevention rejects or queues instead of over-committing.
+- Batches never exceed token budget or max size, no request in two live batches.
+- FIFO order exact, priority order exact with aging preventing starvation (prove with a starvation test), WFQ shares converge to weights within a stated tolerance.
+- A request is never executed by two workers at once. True exactly-once is impossible, so implement at-least-once recovery + idempotent dispatch (request IDs, fencing tokens, dedupe table) = effectively-once; SCH-096 is COMPLETED only when the fencing/dedupe proof test passes and the README states the real guarantee.
+- Leader election uses a lease with a monotonically increasing fencing token and a deposed leader's late writes are rejected.
+
+Scenarios:
+- S15-01: deterministic-clock tests for FIFO, priority, WFQ, aging
+- S15-02: continuous batching with the cpu-transformers worker: new requests join between decode steps and tokens stream correctly per sequence
+- S15-03: property tests for KV and batching invariants (thousands of cases)
+- S15-04: kill the leader under load: new leader within lease TTL, zero duplicate dispatches, zero lost requests
+- S15-05: stop a worker's heartbeats: marked dead, in-flight requests re-queued, client sees exactly one completion
+- S15-07: SSE streaming with TTFT and TPOT histograms from real timestamps
+- S15-08: cancellation frees the queue slot AND KV blocks (assert allocator state)
+
+Phase 2 Invariants & Scenarios:
+- Deadline-aware picks the earliest FEASIBLE deadline (infeasible ones are rejected or deprioritized per documented policy);
+- Admission rejection returns a retryable or non-retryable error per cause with a reason code;
+- Per-model queues never let a request run on a worker lacking the model;
+- Tenant cache quotas are never exceeded and one tenant cannot evict another's blocks beyond its quota;
+- Per-request budget breach rejects/queues, never over-commits;
+- Memory-pressure thresholds trigger the documented policy;
+- Scheduler state recovery after crash yields zero lost and zero duplicated requests;
+- Replica failover re-queues in-flight work once and the client sees one completion;
+- Tenant isolation and rate limits enforced;
+- Decision logs contain no prompt text (redaction proven by grepping stored rows and logs).
+
+Scenarios:
+- S15-04: repeated with failover/recovery features (leader kill under load)
+- S15-06: replica draining end-to-end
+- S15-09: tenant isolation, rate limits, tenant cache quotas
+- S15-10: /metrics scraped and parsed by a real Prometheus container and OTel spans exported to an OTLP collector
+- S15-01/S15-03: extended to deadline/tenant/priority-class policies with deterministic clock and property tests
+

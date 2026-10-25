@@ -1,0 +1,51 @@
+id,feature,layers,priority,area,rank
+SCH-001,Scheduler policy model,BE,P0,Area Scheduler Core,r8
+SCH-004,Priority classes,BE,P0,Area Scheduler Core,r9
+SCH-008,Deadline-aware scheduling,BE,P0,Area Scheduler Core,r17
+SCH-009,Tenant-aware scheduling,BE,P0,Area Scheduler Core,r10
+SCH-010,Per-model queues,BE,P0,Area Scheduler Core,r18
+SCH-013,Admission rejection,BE,P0,Area Scheduler Core,r7
+SCH-016,GPU health detection,BE+DB,P0,Area GPU / Accelerator Management,r24
+SCH-018,GPU utilization tracking,BE+DB,P0,Area GPU / Accelerator Management,r25
+SCH-020,Device assignment,BE+DB,P0,Area GPU / Accelerator Management,r23
+SCH-030,Model metadata,BE+DB,P0,Area Model & Runtime Management,r20
+SCH-033,Model loading,BE+DB,P0,Area Model & Runtime Management,r19
+SCH-038,Model memory footprint,BE+DB,P0,Area Model & Runtime Management,r21
+SCH-042,Runtime selection,BE+DB,P0,Area Model & Runtime Management,r22
+SCH-044,KV-cache capacity tracking,BE+DB,P0,Area KV Cache & Memory,r13
+SCH-047,KV-cache reuse,BE+DB,P0,Area KV Cache & Memory,r15
+SCH-051,Memory pressure detection,BE+DB,P0,Area KV Cache & Memory,r14
+SCH-054,Per-request cache budget,BE+DB,P0,Area KV Cache & Memory,r12
+SCH-055,Tenant cache quotas,BE+DB,P0,Area KV Cache & Memory,r11
+SCH-056,Cache hit-rate metrics,BE+DB,P0,Area KV Cache & Memory,r16
+SCH-058,Dynamic batching,BE,P0,Area Batching & Throughput,r30
+SCH-060,Batch formation window,BE,P0,Area Batching & Throughput,r31
+SCH-063,Prefill batching,BE,P0,Area Batching & Throughput,r32
+SCH-064,Decode batching,BE,P0,Area Batching & Throughput,r33
+SCH-072,GPU-aware routing,BE,P0,Area Request Routing & Load Balancing,r26
+SCH-074,Queue-length routing,BE,P0,Area Request Routing & Load Balancing,r27
+SCH-075,Latency-aware routing,BE,P0,Area Request Routing & Load Balancing,r28
+SCH-082,Replica health checks,BE,P0,Area Request Routing & Load Balancing,r6
+SCH-084,Replica failover,BE,P0,Area Request Routing & Load Balancing,r5
+SCH-086,Distributed scheduler state,BE,P0,Area Distributed Coordination,r3
+SCH-087,Shared queue coordination,BE,P0,Area Distributed Coordination,r4
+SCH-092,Worker discovery,BE,P0,Area Distributed Coordination,r29
+SCH-094,Scheduler failover,BE,P0,Area Distributed Coordination,r1
+SCH-095,State recovery,BE,P0,Area Distributed Coordination,r2
+SCH-102,Scheduler API,BE,P0,Area Backend APIs & Control Plane,r34
+SCH-103,Queue API,BE,P0,Area Backend APIs & Control Plane,r35
+SCH-105,Worker API,BE,P0,Area Backend APIs & Control Plane,r36
+SCH-107,Health endpoint,BE,P0,Area Backend APIs & Control Plane,r37
+SCH-108,Readiness endpoint,BE,P0,Area Backend APIs & Control Plane,r38
+SCH-109,Metrics endpoint,BE,P0,Area Backend APIs & Control Plane,r39
+SCH-113,OpenTelemetry tracing,BE,P0,Area Observability & Reliability,r40
+SCH-114,Structured logs,BE,P0,Area Observability & Reliability,r41
+SCH-115,Request decision logs,BE,P0,Area Observability & Reliability,r42
+SCH-116,Queue wait-time metrics,BE,P0,Area Observability & Reliability,r43
+SCH-119,End-to-end latency metrics,BE,P0,Area Observability & Reliability,r44
+SCH-125,API-key authentication,BE,P2,Area Security & AI/ML Optimization,r45
+SCH-128,Tenant isolation,BE,P2,Area Security & AI/ML Optimization,r46
+SCH-130,Rate limiting,BE,P2,Area Security & AI/ML Optimization,r47
+SCH-143,Live request view,FE+BE,P1,Area Frontend / Operations Console,r48
+SCH-144,Request detail page,FE+BE,P1,Area Frontend / Operations Console,r49
+SCH-146,Latency charts,FE+BE,P1,Area Frontend / Operations Console,r50
