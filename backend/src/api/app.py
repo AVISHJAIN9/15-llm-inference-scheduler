@@ -19,11 +19,21 @@ from coordination.workers import WorkerRegistry
 from routing.router import RequestRouter, WorkerReplica, ReplicaStatus
 from observability.metrics import default_metrics, CONTENT_TYPE_LATEST
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI(
     title="LLM Inference Scheduler Control Plane",
     version="1.0.0",
     docs_url="/docs",
     openapi_url="/openapi.json"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://avishjain9.github.io", "*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 admission_ctrl = AdmissionController(allowed_models=["gpt-2", "qwen2.5-0.5b", "llama-3"], max_queue_depth=1000)
